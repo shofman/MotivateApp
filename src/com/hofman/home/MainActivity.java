@@ -11,7 +11,10 @@ import android.view.View;
 import com.hofman.R;
 import com.hofman.calendar.CalendarMain;
 import com.hofman.todo.TodosOverviewActivity;
-
+/*
+ * TODO: Replace this with a proper home screen
+ * 
+ */
 public class MainActivity extends Activity {
 
 	@Override
