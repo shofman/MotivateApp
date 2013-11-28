@@ -1,0 +1,18 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/action_previous"
+        android:showAsAction="ifRoom|withText"
+        android:orderInCategory="10"
+        android:title="@string/action_previous" />
+   <item
+        android:id="@+id/action_today"
+        android:showAsAction="ifRoom|withText"
+        android:orderInCategory="20"
+        android:title="@string/show_today" />
+    <item
+        android:id="@+id/action_next"
+        android:showAsAction="ifRoom|withText"
+        android:orderInCategory="30"
+        android:title="@string/action_next" />
+</menu>

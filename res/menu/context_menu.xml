@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item
+        android:title="@string/view_todo"
+        android:id="@+id/view_todo"
+        android:showAsAction="ifRoom|withText"
+	/>
+    <item
+        android:title="@string/set_done"
+        android:id="@+id/set_done"
+        android:showAsAction="ifRoom|withText"
+	/>
+
+</menu>
