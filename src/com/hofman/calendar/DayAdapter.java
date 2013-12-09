@@ -71,9 +71,9 @@ public class DayAdapter extends BaseAdapter {
 			displayDate = previousMonthMax - (dayToStart - 2) + position;
 			grey = true;
 		} else if (position + 1> maximumDays + dayToStart - 1)  {
-			displayDate = nextMonthDay;
+			displayDate = (position + 2 - dayToStart) % maximumDays;
 			grey = true;
-			nextMonthDay++;
+			//nextMonthDay++;
 		} else {
 			displayDate = position + 2 - dayToStart;
 		}
@@ -97,7 +97,7 @@ public class DayAdapter extends BaseAdapter {
 		dView.setDay(displayDate, grey);
 		
 		//If it is today, draw a circle around it
-		if (displayMonthName.equals(currMonthName) && today == displayDate && currYear == displayYear) {
+		if (displayMonthName.equals(currMonthName) && today == displayDate && currYear == displayYear && !grey) {
 			dView.setToday();
 		}
 		
