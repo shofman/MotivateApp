@@ -12,6 +12,9 @@ public class TodoTable {
 	public static final String COLUMN_SUMMARY = "summary";
 	public static final String COLUMN_DESCRIPTION = "description";
 	public static final String COLUMN_DAILY = "daily";
+	public static final String COLUMN_CREATIONDAY = "creationday";
+	public static final String COLUMN_CREATIONMONTH = "creationmonth";
+	public static final String COLUMN_CREATIONYEAR = "creationyear";
 	public static final String COLUMN_DUEDATE = "duedate";
 	public static final String COLUMN_REMINDER = "reminder";
 	public static final String COLUMN_TAGS = "tags";
@@ -25,9 +28,12 @@ public class TodoTable {
 			+ COLUMN_CATEGORY + " text not null, "
 			+ COLUMN_SUMMARY + " text not null, "
 			+ COLUMN_DESCRIPTION + " text not null, "
-			+ COLUMN_DAILY + " text not null, "
-			+ COLUMN_DUEDATE + " text not null, " 
-			+ COLUMN_REMINDER + " text not null, "
+			+ COLUMN_DAILY + " integer not null, "
+			+ COLUMN_CREATIONDAY + " text not null, "
+			+ COLUMN_CREATIONMONTH + " text not null, "
+			+ COLUMN_CREATIONYEAR + " text not null, "
+			+ COLUMN_DUEDATE + " text, " 
+			+ COLUMN_REMINDER + " integer, "
 			+ COLUMN_TAGS + " text not null, "
 			+ COLUMN_PRIORITY + " text not null, " 
 			+ COLUMN_TIME + " text not null"

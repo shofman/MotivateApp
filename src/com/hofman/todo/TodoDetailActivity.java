@@ -37,6 +37,7 @@ public class TodoDetailActivity extends Activity {
 		mBodyText = (EditText) findViewById(R.id.todo_edit_description);
 		Button confirmButton = (Button) findViewById(R.id.todo_edit_button);
 		
+		
 		DatePicker datePicker = (DatePicker) findViewById(R.id.duedate);
 		int currentapiVersion = android.os.Build.VERSION.SDK_INT;
 		if (currentapiVersion >= 11) {
@@ -117,6 +118,15 @@ public class TodoDetailActivity extends Activity {
 		values.put(TodoTable.COLUMN_CATEGORY, category);
 		values.put(TodoTable.COLUMN_SUMMARY, summary);
 		values.put(TodoTable.COLUMN_DESCRIPTION, description);
+		values.put(TodoTable.COLUMN_DAILY, 0);
+		values.put(TodoTable.COLUMN_CREATIONDAY, "9");
+		values.put(TodoTable.COLUMN_CREATIONMONTH, "12");
+		values.put(TodoTable.COLUMN_CREATIONYEAR, "2013");
+		values.put(TodoTable.COLUMN_DUEDATE, "1991");
+		values.put(TodoTable.COLUMN_REMINDER, 1);
+		values.put(TodoTable.COLUMN_TAGS, "Tears");
+		values.put(TodoTable.COLUMN_PRIORITY, "High");
+		values.put(TodoTable.COLUMN_TIME, "10:00");
 		
 		if (todoUri == null) {
 			todoUri = getContentResolver().insert(TodoContentProvider.CONTENT_URI, values);
