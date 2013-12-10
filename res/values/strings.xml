@@ -3,7 +3,6 @@
 
     <string name="app_name">MotivationApp</string>
     <string name="calendar">Calendar</string>
-    <string name="welcome">Welcome to my Motivation Application</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_previous">Previous</string>
