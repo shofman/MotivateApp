@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class TodoDatabaseHelper extends SQLiteOpenHelper {
 	
 	private static final String DATABASE_NAME = "todotable.db";
-	private static final int DATABASE_VERSION = 7;
+	private static final int DATABASE_VERSION = 8;
 	
 	public TodoDatabaseHelper(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
