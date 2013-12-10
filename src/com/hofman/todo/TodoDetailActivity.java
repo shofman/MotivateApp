@@ -165,7 +165,10 @@ public class TodoDetailActivity extends Activity {
 		String label = (String) mLabel.getSelectedItem();
 		String summary = mTitleText.getText().toString();
 		String description = mBodyText.getText().toString();
+		String priority = (String) mPriority.getSelectedItem();
 		
+		int daily = (mDaily.isChecked()) ? 1 : 0;
+		int reminder = (mReminder.isChecked()) ? 1 : 0;
 		if (description.length() == 0 && summary.length() == 0) {
 			return;
 		}
@@ -174,15 +177,15 @@ public class TodoDetailActivity extends Activity {
 		values.put(TodoTable.COLUMN_LABEL, label);
 		values.put(TodoTable.COLUMN_SUMMARY, summary);
 		values.put(TodoTable.COLUMN_DESCRIPTION, description);
-		values.put(TodoTable.COLUMN_DAILY, 0);
-		values.put(TodoTable.COLUMN_CREATIONDAY, "9");
-		values.put(TodoTable.COLUMN_CREATIONMONTH, "12");
-		values.put(TodoTable.COLUMN_CREATIONYEAR, "2013");
-		values.put(TodoTable.COLUMN_DUEDAY, "10");
-		values.put(TodoTable.COLUMN_DUEMONTH, "12");
-		values.put(TodoTable.COLUMN_DUEYEAR, "2013");
-		values.put(TodoTable.COLUMN_REMINDER, 1);
-		values.put(TodoTable.COLUMN_PRIORITY, "High");
+		values.put(TodoTable.COLUMN_DAILY, daily);
+		values.put(TodoTable.COLUMN_CREATIONDAY, "" + creationDay);
+		values.put(TodoTable.COLUMN_CREATIONMONTH, "" + creationMonth);
+		values.put(TodoTable.COLUMN_CREATIONYEAR, "" + creationYear);
+		values.put(TodoTable.COLUMN_DUEDAY, "" + dueDay);
+		values.put(TodoTable.COLUMN_DUEMONTH, "" + dueMonth);
+		values.put(TodoTable.COLUMN_DUEYEAR, "" + dueYear);
+		values.put(TodoTable.COLUMN_REMINDER, reminder);
+		values.put(TodoTable.COLUMN_PRIORITY, priority);
 		values.put(TodoTable.COLUMN_TIME, "10:00");
 		
 		if (todoUri == null) {
