@@ -34,7 +34,6 @@ public class TodoTable {
 			+ COLUMN_CREATIONYEAR + " text not null, "
 			+ COLUMN_DUEDATE + " text, " 
 			+ COLUMN_REMINDER + " integer, "
-			+ COLUMN_TAGS + " text not null, "
 			+ COLUMN_PRIORITY + " text not null, " 
 			+ COLUMN_TIME + " text not null"
 			+ ");";

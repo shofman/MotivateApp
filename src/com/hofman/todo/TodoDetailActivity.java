@@ -1,7 +1,5 @@
 package com.hofman.todo;
 
-import java.lang.reflect.Method;
-
 import android.app.Activity;
 import android.content.ContentValues;
 import android.database.Cursor;
@@ -10,7 +8,6 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -32,22 +29,10 @@ public class TodoDetailActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.todo_edit);
 		
-		mCategory = (Spinner) findViewById(R.id.category);
+		mCategory = (Spinner) findViewById(R.id.label);
 		mTitleText = (EditText) findViewById(R.id.todo_edit_summary);
 		mBodyText = (EditText) findViewById(R.id.todo_edit_description);
 		Button confirmButton = (Button) findViewById(R.id.todo_edit_button);
-		
-		
-		DatePicker datePicker = (DatePicker) findViewById(R.id.duedate);
-		int currentapiVersion = android.os.Build.VERSION.SDK_INT;
-		if (currentapiVersion >= 11) {
-		  try {
-		    Method m = datePicker.getClass().getMethod("setCalendarViewShown", boolean.class);
-		    m.invoke(datePicker, false);
-		  }
-		  catch (Exception e) {} // eat exception in our case
-		}
-		
 		Bundle extras = getIntent().getExtras();
 		
 		todoUri = (savedInstanceState == null) ? null : (Uri) savedInstanceState.getParcelable(TodoContentProvider.CONTENT_ITEM_TYPE);
@@ -124,7 +109,6 @@ public class TodoDetailActivity extends Activity {
 		values.put(TodoTable.COLUMN_CREATIONYEAR, "2013");
 		values.put(TodoTable.COLUMN_DUEDATE, "1991");
 		values.put(TodoTable.COLUMN_REMINDER, 1);
-		values.put(TodoTable.COLUMN_TAGS, "Tears");
 		values.put(TodoTable.COLUMN_PRIORITY, "High");
 		values.put(TodoTable.COLUMN_TIME, "10:00");
 		

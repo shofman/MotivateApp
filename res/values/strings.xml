@@ -3,6 +3,7 @@
 
     <string name="app_name">MotivationApp</string>
     <string name="calendar">Calendar</string>
+    <string name="welcome">Welcome to my Motivation Application</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_previous">Previous</string>
@@ -22,6 +23,17 @@
     <string name="todo_edit_confirm">Confirm</string>
     <string name="title_activity_todos_overview">TodosOverviewActivity</string>
     <string name="title_activity_todo_detail">TodoDetailActivity</string>
-    <string name="todo_edit_tags">List tags here, separated with a comma</string>
+    
+    <!-- Edit todo list strings -->
+    <string name="display_for_edit_label">Category: </string>
+    <string name="display_for_edit_summary">Summary: </string>
+    <string name="display_for_edit_description">Description: </string>
+    <string name="display_for_edit_daily">Complete Daily</string>
+    <string name="display_for_edit_creationdate">Create: </string>
+    <string name="display_for_edit_duedate">Date Due: </string>
+    <string name="display_for_edit_reminder">Set Reminder</string>
+    <string name="display_for_edit_priority">Priority: </string>
+    <string name="display_for_edit_time">Time Due: </string>
+    <string name="no_due_date">No due date set</string>
 
 </resources>
