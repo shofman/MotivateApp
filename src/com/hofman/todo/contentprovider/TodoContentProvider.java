@@ -112,7 +112,14 @@ public class TodoContentProvider extends ContentProvider {
 	}
 	
 	private void checkColumns(String[] projection) {
-		String[] available = {TodoTable.COLUMN_CATEGORY, TodoTable.COLUMN_SUMMARY, TodoTable.COLUMN_DESCRIPTION, TodoTable.COLUMN_DAILY, TodoTable.COLUMN_ID };
+		String[] available = {TodoTable.COLUMN_LABEL, TodoTable.COLUMN_SUMMARY, 
+							  TodoTable.COLUMN_DESCRIPTION, TodoTable.COLUMN_DAILY, 
+							  TodoTable.COLUMN_CREATIONDAY, TodoTable.COLUMN_CREATIONMONTH,
+							  TodoTable.COLUMN_CREATIONYEAR, TodoTable.COLUMN_DUEDAY,
+							  TodoTable.COLUMN_DUEMONTH, TodoTable.COLUMN_DUEYEAR,
+							  TodoTable.COLUMN_TAGS, TodoTable.COLUMN_PRIORITY,
+							  TodoTable.COLUMN_TIME, TodoTable.COLUMN_REMINDER,
+							  TodoTable.COLUMN_ID };
 		if (projection != null) {
 			HashSet<String> requestedColumns = new HashSet<String>(Arrays.asList(projection));
 			HashSet<String> availableColumns = new HashSet<String>(Arrays.asList(available));
