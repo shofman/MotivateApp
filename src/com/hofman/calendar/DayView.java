@@ -102,7 +102,7 @@ public class DayView extends View {
 
 	//Set a red X for this day
 	protected void setRedX() {
-		hasX = true;
+		hasX = !hasX;
 	}
 
 }

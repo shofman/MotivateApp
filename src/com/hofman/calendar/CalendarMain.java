@@ -1,7 +1,9 @@
 package com.hofman.calendar;
 
 import com.hofman.R;
+import com.hofman.todo.DailyTodosOverviewActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.PagerAdapter;
@@ -93,7 +95,11 @@ public class CalendarMain extends FragmentActivity {
 	        	Toast.makeText(getApplicationContext(), "Set done", Toast.LENGTH_SHORT).show();
 	            return true;
 	        case R.id.view_todo:
-	        	Toast.makeText(getApplicationContext(), "Viewing list", Toast.LENGTH_SHORT).show();
+	        	int[] currentMonthAndYear = ScreenSlideCalFragment.getMonthAndYearBasedOnCalendar(mPager.getCurrentItem());
+	        	Toast.makeText(getApplicationContext(), "" + info.position + " " + currentMonthAndYear[0] + " " + currentMonthAndYear[1], Toast.LENGTH_SHORT).show();
+	        	//Toast.makeText(getApplicationContext(), "Viewing list", Toast.LENGTH_SHORT).show();
+	    		Intent i = new Intent(this, DailyTodosOverviewActivity.class);
+	    		startActivity(i);
 	        	return true;
 	        default:
 	            return super.onContextItemSelected(item);

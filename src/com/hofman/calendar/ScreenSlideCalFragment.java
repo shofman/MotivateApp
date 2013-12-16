@@ -38,6 +38,7 @@ public class ScreenSlideCalFragment extends android.support.v4.app.Fragment {
 	private static int currYear, currDay;					//CurrYear and currDay are the current day's values, used to tell when 'today' is
 	private static String showMonthName = "", currMonthName = "";			//One to display, one to compare
 	
+	
 	/*
 	 * Creates a new fragment whenever called, and passes the page number for recall later
 	 */
@@ -114,6 +115,18 @@ public class ScreenSlideCalFragment extends android.support.v4.app.Fragment {
 		return rootView;
 	}
 	
+	public static int[] getMonthAndYearBasedOnCalendar(int pageNumber) {
+		Calendar c = Calendar.getInstance();
+		int todayMonth = c.get(Calendar.MONTH);
+		int todayYear = c.get(Calendar.YEAR);
+		
+		int[] adjustedMonthAndYear = adjustMonthAndYearBasedOnPageNumber(pageNumber, todayMonth, todayYear);
+		todayMonth = adjustedMonthAndYear[0];
+		todayYear = adjustedMonthAndYear[1];
+		
+		return new int[] {todayMonth, todayYear};
+	}
+	
 	private void setupCalendar() {
 		//Gets the current month, at today's date. currYear and currDay do not change (used to determine if today)
 		showYear = mCalendar.get(Calendar.YEAR);
@@ -121,12 +134,24 @@ public class ScreenSlideCalFragment extends android.support.v4.app.Fragment {
 		currYear = mCalendar.get(Calendar.YEAR);
 		currDay = mCalendar.get(Calendar.DATE);
 
+		int[] adjustedMonthAndYear = adjustMonthAndYearBasedOnPageNumber(mPageNumber, showMonth, showYear);
+		showMonth = adjustedMonthAndYear[0];
+		showYear = adjustedMonthAndYear[1];
+		//Find the current date, before changing mCalendar to reflect the shown date. Find previous month from new Month (uses wraparound)
+		currDay = mCalendar.get(Calendar.DATE);
+		currMonthName = new SimpleDateFormat("MMMM", english).format(mCalendar.getTime());
+		mCalendar.set(showYear, showMonth, 1);
+		showMonthName = new SimpleDateFormat("MMMM", english).format(mCalendar.getTime());
+		previousMonth.set(showYear, showMonth-1, 1);
+	}
+	
+	public static int[] adjustMonthAndYearBasedOnPageNumber(int pageNumber, int currentMonth, int currentYear) {
 		/*
 		 * Find the difference between today's month value and the main page
 		 * This tells us how much we've shifted the results to center the main page and what we need
 		 * to change for the next value
 		 */
-		int shiftedValue = showMonth - mainPage;
+		int shiftedValue = currentMonth - mainPage;
 		
 		/*
 		 * Adjust the month by adding the currentPage together with the shift, 
@@ -137,7 +162,7 @@ public class ScreenSlideCalFragment extends android.support.v4.app.Fragment {
 		 * 			shiftedValue = 8 (month shown on the first page)
 		 * 			(new) showMonth = 3+8 = 11 % 12 = 11 (December)
 		 */
-		showMonth = (mPageNumber + shiftedValue) % 12;
+		currentMonth = (pageNumber + shiftedValue) % 12;
 		
 		/*
 		 * If showMonth is positive (we are looking to the right), we add 1 for every time we pass a 12
@@ -145,21 +170,16 @@ public class ScreenSlideCalFragment extends android.support.v4.app.Fragment {
 		 * (mCalendar tries to assist us if negative by changing the year, but this doesn't work with positive values)
 		 */
 		int changeYearValue;
-		if (showMonth >= 0) {
-			changeYearValue = (int) ((float) (mPageNumber + shiftedValue)) / 12;
+		if (currentMonth >= 0) {
+			changeYearValue = (int) ((float) (pageNumber + shiftedValue)) / 12;
 		} else {
-			changeYearValue = (int) ((float) (mPageNumber + shiftedValue) - 12) / 12;
-			showMonth += 12;
+			changeYearValue = (int) ((float) (pageNumber + shiftedValue) - 12) / 12;
+			currentMonth += 12;
 		}
-		showYear += changeYearValue;
-		
-		//Find the current date, before changing mCalendar to reflect the shown date. Find previous month from new Month (uses wraparound)
-		currDay = mCalendar.get(Calendar.DATE);
-		currMonthName = new SimpleDateFormat("MMMM", english).format(mCalendar.getTime());
-		mCalendar.set(showYear, showMonth, 1);
-		showMonthName = new SimpleDateFormat("MMMM", english).format(mCalendar.getTime());
-		previousMonth.set(showYear, showMonth-1, 1);
-
+		currentYear += changeYearValue;
+		return new int[] {currentMonth, currentYear};
 	}
+	
+
 	
 }

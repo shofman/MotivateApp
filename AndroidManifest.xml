@@ -36,6 +36,10 @@
             android:name="com.hofman.todo.TodosOverviewActivity"
             android:label="@string/title_activity_todos_overview" >
         </activity>
+        <activity 
+            android:name="com.hofman.todo.DailyTodosOverviewActivity"
+            android:label="@string/title_activity_todos_overview">
+        </activity>
         <activity
             android:name="com.hofman.todo.TodoDetailActivity"
             android:label="@string/title_activity_todo_detail" >
